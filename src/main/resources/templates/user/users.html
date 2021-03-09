@@ -1,25 +1,18 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-    <title>User's</title>
-</head>
+<head th:replace="~{piece :: head('User')}"></head>
 
 <body>
+
+    <header th:replace="~{piece :: header('User')}"></header>
 
     <div class="container">
         <table class="table table-dark table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">LOGIN</th>
+                    <th scope="col">EMAIL</th>
                     <th scope="col">PASSWORD</th>
                     <th scope="col">STATUS</th>
                 </tr>
@@ -27,12 +20,22 @@
             <tbody>
                 <tr th:each="user :${users}">
                     <th class="col-1" scope="row" th:text="${user.id}">1</th>
-                    <td class="col-2" th:text="${user.login}">Mark</td>
+                    <td class="col-2" th:text="${user.mail}">Mark</td>
                     <td class="col-2" th:text="${user.password}">Otto</td>
                     <td class="col-2" th:text="${user.status}">ACTIVE</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container mt-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/register">back</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/register/users/new">new user</a>
+            </li>
+        </ul>
     </div>
 
 

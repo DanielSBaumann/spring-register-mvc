@@ -1,0 +1,4 @@
+vscode Windows Shift + Alt + F.
+Windows + Shift + S: ao pressionar essas três teclas simultaneamente, o Windows abrirá a ferramenta Captura e Esboço. Você poderá selecionar um trecho específico da tela
+git remote add origin https://github.com/DanielSBaumann/register-page-spring
+web parameter tempering

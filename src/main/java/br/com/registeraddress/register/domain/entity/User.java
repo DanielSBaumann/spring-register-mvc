@@ -2,6 +2,7 @@ package br.com.registeraddress.register.domain.entity;
 
 import br.com.registeraddress.register.domain.enums.StatusUser;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,10 +10,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Data
 @Table(name = "user")
+
 public class User {
 
     @Id
@@ -20,8 +23,12 @@ public class User {
     private Integer id;
 
     @Column
-    @NotEmpty(message = "Login obrigatorio")
-    private String login;
+    @NotEmpty(message = "Nome obrigatorio")
+    private String name;
+
+    @Column
+    @NotEmpty(message = "Email obrigatorio")
+    private String mail;
 
     @Column
     @NotEmpty(message = "Senha obrigatorio")
