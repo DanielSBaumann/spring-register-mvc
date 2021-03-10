@@ -13,16 +13,22 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">EMAIL</th>
-                    <th scope="col">PASSWORD</th>
+                    <th scope="col">NAME</th>
                     <th scope="col">STATUS</th>
+                    <th scope="col">DETAIL'S</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="user :${users}">
                     <th class="col-1" scope="row" th:text="${user.id}">1</th>
                     <td class="col-2" th:text="${user.mail}">Mark</td>
-                    <td class="col-2" th:text="${user.password}">Otto</td>
+                    <td class="col-2" th:text="${user.name}">Otto</td>
                     <td class="col-2" th:text="${user.status}">ACTIVE</td>
+                    <td class="col-2"><a th:href="@{/register/user/{id}(id=${user.id})}">details</a></td>
+                    <td class="col-2"><a th:href="@{/register/user/{id}/edit(id=${user.id})}">edit</a></td>
+                    <td class="col-2"><a href="#">delete</a></td>
                 </tr>
             </tbody>
         </table>

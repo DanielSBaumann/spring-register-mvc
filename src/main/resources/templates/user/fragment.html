@@ -1,0 +1,37 @@
+<div class="container-sm" th:fragment="form(newUserDTO,action)">
+    <div class="row">
+        <form th:object="${newUserDTO}" th:action="${action}" method="POST">
+            <div class="mb-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{name}"
+                    placeholder="Your name..." aria-describedby="nameHelp">
+                <div class="invalid-feedback" th:errors="*{name}"></div>
+            </div>
+            <div class="mb-4">
+                <label for="mail" class="form-label">Email address</label>
+                <input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{mail}"
+                    placeholder="name@mail.com..." aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="invalid-feedback" th:errors="*{mail}"></div>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{password}"
+                    placeholder="name@1234">
+                <div class="invalid-feedback" th:errors="*{password}"></div>
+            </div>
+            <div class="mb-4">
+                <label for="status">Status</label>
+                <select class="form-select" th:errorclass="is-invalid" name="status" id="status">
+                    <option value="">select...</option>
+                    <option th:each="status : ${listStatusUser}" th:value="${status}" th:text="${status}"></option>
+                </select>
+                <div class="invalid-feedback" th:errors="*{status}"></div>
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <a href="javascript:history.back()">back</a>
+        </form>
+    </div>
+</div>

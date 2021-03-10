@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{piece :: head('User Id')}"></head>
+
+<body>
+
+    <header th:replace="~{piece :: header('User #'+${user.id})}"></header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <b>Id: </b><span th:text="${user.id}"></span><br>
+                    <b>Name: </b><span th:text="${user.name}"></span><br>
+                    <b>Email: </b><span th:text="${user.mail}"></span><br>
+                    <b>Password: </b><span th:text="${user.password}"></span><br>
+                    <b>Status: </b><span th:text="${user.status.toString()}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a th:href="@{/register/user/{id}/edit(id=${user.id})}">Edit</a> <a href="/register/user">Back</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
