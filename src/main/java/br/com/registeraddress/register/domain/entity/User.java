@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
@@ -15,7 +14,6 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 @Data
 @Table(name = "user")
-
 public class User {
 
     @Id
@@ -39,5 +37,8 @@ public class User {
 
     @Column(columnDefinition = "boolean default false")
     private boolean admin;
+
+    @OneToOne(mappedBy = "user")
+    private Address address;
 
 }

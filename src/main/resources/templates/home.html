@@ -5,20 +5,54 @@
 
 <body>
 
+    <div class="card text-center">
+
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" 
+                    href="/register"
+                    th:classappend="${#httpServletRequest.getRequestURI().equals('/register')?'active':''}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" 
+                    href="/register/user"
+                    th:classappend="${#httpServletRequest.getRequestURI().equals('/register/user')?'active':''}">User's</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" 
+                    href="#"
+                    th:classappend="${#httpServletRequest.getRequestURI().equals('/register/product')?'active':''}">Product's</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <h3 class="card-title">Register System</h3>
+            <p class="card-text">Devloped by <a href="https://github.com/DanielSBaumann">Daniel Baumann</a></p>
+            <div class="container">
+                <img src="https://image.freepik.com/vetores-gratis/site-de-programacao-de-minusculos-desenvolvedores-para-ilustracao-vetorial-plana-de-plataforma-de-internet-programadores-de-desenho-animado-perto-da-tela-com-codigo-aberto-ou-script-desenvolvimento-de-software-e-conceito-de-tecnologia-digital_74855-10168.jpg" style="max-width: 70%;" alt="Pessoas vetor criado por pch.vector - br.freepik.com">
+            </div>
+            <a href="#" class="btn btn-primary" th:onclick='window.location.href="/register/user"'>User's</a> 
+            <a href="#" class="btn btn-primary">Product's</a>
+        </div>
+
+    </div>
+
+    <!--
+        https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-programador_9713041.html
+        C:\Users\USER\Desktop\register\src\main\resources\static\pc.jpg
     <header th:replace="~{piece :: header('Home')}"></header>
 
     <main>
-        <div class="container mt-4">
-            <div class="list-group">
-
-                <button type="button" class="lis-group-item list-group-item-action"
+        <div class="container mt-12">
+                <button type="button" class="btn btn-primary"
                     th:onclick='window.location.href="/register/user"'>User's</button>
 
-                <button type="button" class="lis-group-item list-group-item-action">Product's</button>
-
-            </div>
+                <button type="button" class="btn btn-primary">Product's</button>
         </div>
     </main>
+    -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

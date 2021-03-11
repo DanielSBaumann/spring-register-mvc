@@ -5,6 +5,7 @@ import br.com.registeraddress.register.domain.enums.StatusUser;
 import br.com.registeraddress.register.domain.repository.Users;
 import br.com.registeraddress.register.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -101,5 +102,16 @@ public class UserController {
             }
             return new ModelAndView("redirect:/register/user");
         }
+    }
+
+    @GetMapping("/user/{id}/delete")
+    public String delete(@PathVariable Integer id) {
+        try {
+            repository.deleteById(id);
+            return "redirect:/register/user";
+        } catch (EmptyResultDataAccessException e) {
+            return "redirect:/register/user";
+        }
+
     }
 }
