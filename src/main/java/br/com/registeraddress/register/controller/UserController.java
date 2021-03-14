@@ -45,7 +45,6 @@ public class UserController {
     @PostMapping("/user")
     public ModelAndView create(@Valid NewUserDTO newUserDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            System.out.println("\n**************************ERRO******************************\n");
             ModelAndView mv = new ModelAndView("/user/newuser");
             mv.addObject("listStatusUser", StatusUser.values());
             return mv;
