@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{piece :: head('User Id')}"></head>
+
+<body>
+
+    <header th:replace="~{piece :: header('Address User #'+${userId})}"></header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <b>Cep: </b><span th:text="${address.cep}"></span><br>
+                    <b>Estado: </b><span th:text="${address.state}"></span><br>
+                    <b>Cidade: </b><span th:text="${address.city}"></span><br>
+                    <b>Bairro: </b><span th:text="${address.district}"></span><br>
+                    <b>Endereco: </b><span th:text="${address.address}"></span><br>
+                    <b>Numero: </b><span th:text="${address.num}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!--@{/register/user/{id}/edit(id=${user.id})}-->
+                    <a th:href="@{/register/address/{id}/edit(id=${userId})}">Edit</a> <a href="/register/user">Back</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

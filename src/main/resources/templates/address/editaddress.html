@@ -1,0 +1,147 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{piece :: head('User Id')}"></head>
+
+<body>
+
+    <header th:replace="~{piece :: header('Update Address User #'+${userId})}"></header>
+
+    <div class="container">
+        <form class="row g-3" id="submit-form" th:object="${newAddressDTO}" method="POST" th:action="@{/register/address/{id}(id=${userId})}">
+
+            <!--<input type="hidden" th:attr="value = ${idUser}" id="idUser" name="idUser">
+                th:field="*{name}"
+            -->
+            <input 
+                type="hidden" 
+                th:field="*{idUser}">
+
+            <div class="col-md-6">
+                <label for="cep" class="form-label">Zip</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                th:field="*{cep}" 
+                placeholder="Your zip code here 00.000-000...">
+            </div>
+
+            <div class="col-md-3">
+                <label for="state" class="form-label">State</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    th:field="*{state}" 
+                    disabled>
+            </div>
+
+            <div class="col-md-8">
+                <label for="city" class="form-label">City</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    th:field="*{city}" 
+                    aria-describedby="validationServer03Feedback" 
+                    required
+                    disabled>
+            </div>
+
+            <div class="col-md-8">
+                <label for="district" class="form-label">District</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    th:field="*{district}" 
+                    aria-describedby="validationServer03Feedback"
+                    required
+                    disabled>
+            </div>
+
+            <div class="col-md-6">
+                <label for="address" class="form-label">Addres</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    th:field="*{address}" 
+                    aria-describedby="validationServer03Feedback"
+                    required 
+                    disabled>
+            </div>
+
+            <div class="col-md-2">
+                <label for="num" class="form-label">Number</label>
+                <input 
+                    type="text"     
+                    class="form-control" 
+                    th:field="*{num}" 
+                    required 
+                    disabled>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnSub" type="button">Submit</button>
+            </div>
+
+            <div class="mb-8">
+                <a href="#">back</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+/**
+ * let aux = document.getElementById("main-form");
+        aux.action = "ServUpdateUser";
+        aux.method = "POST";
+        aux.submit();
+ */
+        $("#btnSub").click(function () {
+            $('#state').prop("disabled", false)
+            $('#city').prop("disabled", false)
+            $('#district').prop("disabled", false)
+            $('#address').prop("disabled", false)
+            $('#num').prop("disabled", false)
+            $("#submit-form").submit();
+        });
+
+        $("#cep").keyup(function () {
+            let aux = $('#cep').val();
+            if (aux.length == 8 && aux.match(/^[0-9]+$/)) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://cep.la/" + aux, true);
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.onreadystatechange = function () {
+                    if ((xhr.readyState == 0 || xhr.readyState == 4) && xhr.status == 200) {
+                        let address = JSON.parse(xhr.responseText);
+                        //state
+                        $('#state').val(address.uf)
+                        $('#state').prop("disabled", false)
+                        //city
+                        $('#city').val(address.cidade)
+                        $('#city').prop("disabled", false)
+                        //district
+                        $('#district').val(address.bairro)
+                        $('#district').prop("disabled", false)
+                        //address
+                        $('#address').val(address.logradouro)
+                        $('#address').prop("disabled", false)
+                        //num
+                        $('#num').prop("disabled", false)
+                    }
+                };
+                xhr.send(null);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

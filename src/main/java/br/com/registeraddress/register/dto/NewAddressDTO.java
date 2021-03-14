@@ -1,5 +1,7 @@
 package br.com.registeraddress.register.dto;
 
+import br.com.registeraddress.register.domain.entity.Address;
+import br.com.registeraddress.register.domain.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,4 +39,25 @@ public class NewAddressDTO {
     @NotNull
     @NotBlank
     private String num;
+
+    public Address toAddress(Address address) {
+        address.setCep(this.cep);
+        address.setState(this.state);
+        address.setCity(this.city);
+        address.setDistrict(this.district);
+        address.setAddress(this.address);
+        address.setNum(this.num);
+        address.setUser(new User(this.idUser));
+        return address;
+    }
+
+    public void fromAddress(Address address) {
+        this.cep = address.getCep();
+        this.state = address.getState();
+        this.city = address.getCity();
+        this.district = address.getDistrict();
+        this.address = address.getAddress();
+        this.num = address.getNum();
+        this.idUser = address.getUser().getId();
+    }
 }

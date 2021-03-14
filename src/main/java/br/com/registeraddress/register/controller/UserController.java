@@ -1,7 +1,9 @@
 package br.com.registeraddress.register.controller;
 
+import br.com.registeraddress.register.domain.entity.Address;
 import br.com.registeraddress.register.domain.entity.User;
 import br.com.registeraddress.register.domain.enums.StatusUser;
+import br.com.registeraddress.register.domain.repository.AddressRepo;
 import br.com.registeraddress.register.domain.repository.Users;
 import br.com.registeraddress.register.dto.NewUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class UserController {
 
     @Autowired
     private Users repository;
+
+    @Autowired
+    private AddressRepo addressRepository;
 
     @GetMapping("/user")
     public ModelAndView users() {
@@ -88,7 +93,6 @@ public class UserController {
     @PostMapping("/user/{id}")
     public ModelAndView update(@PathVariable Integer id, @Valid NewUserDTO newUserDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            System.out.println("\n**************************ERRO******************************\n");
             ModelAndView mv = new ModelAndView("/user/edituser");
             mv.addObject("userId", id);
             mv.addObject("listStatusUser", StatusUser.values());
@@ -107,11 +111,14 @@ public class UserController {
     @GetMapping("/user/{id}/delete")
     public String delete(@PathVariable Integer id) {
         try {
+            Optional<Address> optional = addressRepository.findByUserId(id);
+            if (optional.isPresent()) {
+                addressRepository.delete(optional.get());
+            }
             repository.deleteById(id);
             return "redirect:/register/user";
         } catch (EmptyResultDataAccessException e) {
             return "redirect:/register/user";
         }
-
     }
 }
