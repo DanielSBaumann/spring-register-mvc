@@ -4,9 +4,9 @@
  <a href="#-sobre-o-projeto">About</a> •
  <a href="#-funcionalidades">Funtcionalities</a> •
  <a href="#-como-executar-o-projeto">How to test</a> •
- <a href="#-tecnologias">Tecnologies</a> • 
+ <a href="#-tecnologias">Technologies</a> • 
  <a href="#-autor">Author</a> • 
- <a href="#user-content--licença">license</a>
+ <a href="#user-content--licença">License</a>
 </p>
 
 ## 💬 About project
@@ -59,7 +59,7 @@
 
 ---
 
-## 💻 Tecnologias utilizadas 
+## 💻 Technologies used 
 
 ### Frontend
 
