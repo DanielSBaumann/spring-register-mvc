@@ -45,7 +45,7 @@
 
 <br>
 
-<img src="" width="700" height="300" alt="gif-login"/>
+<img src="https://github.com/DanielSBaumann/spring-register-mvc/blob/main/src/main/resources/static/register.gif" width="700" height="300" alt="gif-login"/>
 
 <br>
 
