@@ -14,7 +14,7 @@
 <br>
 
 <p>
-  A simple web register application using Spring MVC + Bootstrap + MariaDB
+  A simple web register application using Spring MVC + Bootstrap + PostgreSQL
 </p>
 
 <br>
@@ -39,21 +39,13 @@
 
 <br>
 
-<p>🚧🚧🚧 Under construction!! 🚧🚧🚧</p>
+<p>Test the application in <a href="https://dsb-register.herokuapp.com/register">Heroku</a></p>
 
 <br>
 
-```
-    public class EmAndamento {
+<br>
 
-	public static void main(String[] args) {
-
-    System.out.println("Em breve!!!");
-
-	}
-
-}
-```
+<img src="" width="700" height="300" alt="gif-login"/>
 
 <br>
 
@@ -81,7 +73,7 @@
 <ul>
   <li>Xampp</li>
   <li>Tomcat</li>
-  <li>MariaDB</li>
+  <li>PostgreSQL</li>
 </ul>
 
 ---
